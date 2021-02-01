@@ -1,0 +1,36 @@
+Assignment 1 (Due: Feb 5)
+
+1. Discuss your initial thoughts in detail on how you will design this application? (2 points)
+
+There are a few things that need to be prioritized when building such apps, functionality and usability. We will be focusing on a user friendly interface with a robust backend to take care of any failures or errors from both the user and servers. 
+
+We will be using tools such as Flask to handle the backend, MongoDB or Postgres for our database, HTML and CSS for the frontend and finally use Figma to prototype/design the looks of the website.
+
+This project definitely seems a lot of fun and we will try to use good APIs to get the results we need for the gas prices. The software will include a general purpose modular login system that allows user authentication and also let them sign up as new users. 
+
+We will be using a database to keep track of all users and have a good profile management system.
+
+Through the APIs we seek to find we will be able to get fuel quotes from any particular location and provide them accordingly
+
+We will also be keeping track of fuel history for individual users. This will also help us keep track of all the transactions happening in the application
+
+A FAQ will also be available for easy user guides on how to use the application, how to register and the methodologies/software used for the application.
+(You guys can add more if you guys want)
+
+
+
+2. Discuss what development methodology you will use and why? (2 points)
+For this application we will be using the Waterfall Methodology.
+
+One of the main reasons the Waterfall Methodology fits perfectly for this application is because of its strict structure. Although we aren’t limited to just the required features, we do have a solid outline already provided to us. Since we have a clear requirement, we already know what needs to be done and what is the main goal of this application. This will help us stay on task and the waterfall method suits perfectly. The main advantage waterfall methodology gives us is having clear objectives which will help us develop the application much faster.
+
+Source: https://www.synopsys.com/blogs/software-security/top-4-software-development-methodologies/  and Slides (lecture2)
+(You guys can add more if you guys want)
+
+
+
+3. Provide a high level design / architecture of your solution that you are proposing? (6 points) Think this is talking about UML? I have no clue, but UML is a requirement for this assignment.
+UML resources to help make ours: 
+https://creately.com/diagram-type/class-diagram
+
+
