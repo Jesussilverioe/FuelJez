@@ -1,7 +1,71 @@
 /* CSS FOR QUOTES/ HISTORY PAGE */
 
 body{
-    background-image: url("/static/images/background2.jpg");
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-y: 3%;
+}
+
+header{
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+}
+
+nav{
+    margin-top: 2%;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    float: right;
+}
+  
+  
+nav li {
+    display: inline-block;
+    padding: 15px 30px;
+    position: relative;
+}
+  
+nav a {
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color:#18778C;
+}
+  
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #18778C;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+    /* top: 10%; */
+    width: 50%;
+}
+
+.saying{
+    font-family:'Yeseva One', Courier, monospace;
+}
+
+.quote_box{
+    background-color: #18778cd3;
+    width: 30%;
+    min-height: 70vh;
+    float: right;
+    margin-right: 8%;
+    transform: translate(0, -5%); 
+    border-radius: 3%;
 }
