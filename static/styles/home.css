@@ -6,7 +6,7 @@ body{
     background-image: url("/static/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 3%;
+    background-position-y: 15%;
 }
 
 header{
@@ -57,15 +57,25 @@ nav a:hover::before {
 }
 
 .saying{
-    font-family:'Yeseva One', Courier, monospace;
+    font-family:'Yeseva One';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 55px;
+    color: white;
+    margin-top: 11%;
+    margin-left: 16%;
+    float: left;
 }
 
 .quote_box{
     background-color: #18778cd3;
-    width: 30%;
+    width: 35%;
     min-height: 70vh;
     float: right;
-    margin-right: 8%;
+    margin-right: 5%;
     transform: translate(0, -5%); 
     border-radius: 3%;
 }
+
+/* FORM FOR QUOTES */
+
