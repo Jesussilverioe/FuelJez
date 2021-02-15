@@ -3,10 +3,10 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("/static/images/background.jpg");
+    background-image: url("/static/images/background2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 15%;
+    /* background-position-y: 15%; */
 }
 
 header{
@@ -63,12 +63,12 @@ nav a:hover::before {
     font-size: 55px;
     color: white;
     margin-top: 11%;
-    margin-left: 16%;
+    margin-left: 15%;
     float: left;
 }
 
 .quote_box{
-    background-color: #18778cd3;
+    background-color: #18778cce;
     width: 32%;
     min-height: 70vh;
     float: right;
@@ -77,6 +77,14 @@ nav a:hover::before {
     border-radius: 3%;
 }
 
+.message{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #bdb9b9;
+    font-weight: bold;
+    padding: 0 15%;
+    margin-bottom: 5%;
+}
 /* FORM FOR QUOTES */
 
 .input_box{
@@ -103,12 +111,60 @@ nav a:hover::before {
 }
 
 .input_label{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Montserrat;
     font-size: 16px;
     color: white;
 }
 
 .submit_button{
+    text-align: center;
     width: 100%;
-    float: center;
+}
+
+.btn{
+    /* width: 60%;
+    padding: 15px 0;
+    background-color: #AA9D28; */
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5%;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    width: 65%;
+    cursor: pointer;
+    text-align: center;
+    background-color: #AA9D28;
+}
+
+.btn:hover {
+    background-color: rgb(185, 185, 185);
+    transition: 0.3s;
+}
+
+.btn:focus {
+    border: none;
+    outline: none;
+}
+
+/* HISTORY */
+
+.history_box{
+    background-color: rgba(255, 255, 255, 0.87);
+    width: 68%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 65vh;
+    border-radius: 5px;
+}
+
+.history{
+    padding: 35px 40px;
+}
+
+.history_title{
+    font-family: Montserrat;
+    font-size: 25px; 
+    /* font-weight: bolder;  */
 }
