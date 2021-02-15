@@ -40,9 +40,27 @@
         </div>
 
         <div>
-            <label>Email</label>
-            <br>
-            <input type="mail" name="signin_email" required/>
+            <div class="input_box">
+                <label class="input_label">Gallons Requested</label>
+                <br>
+                <input type="number" name="gallons_requested" min="1" required/>
+            </div>
+
+            <div class="input_box">
+                <label class="input_label">Delivery Address</label>
+                <br>
+                <input type="text" name="delivery_address" required/>
+            </div>
+
+            <div class="input_box">
+                <label class="input_label">Delivery Date</label>
+                <br>
+                <input type="text" name="delivery_date" onfocus="(this.type='date')"  required/>
+            </div>
+
+            <div class="submit_button">
+                <button type="submit" class="btn">GET QUOTE</button>
+            </div>
     
         </div>
         

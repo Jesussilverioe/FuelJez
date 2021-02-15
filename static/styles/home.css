@@ -69,13 +69,46 @@ nav a:hover::before {
 
 .quote_box{
     background-color: #18778cd3;
-    width: 35%;
+    width: 32%;
     min-height: 70vh;
     float: right;
-    margin-right: 5%;
+    margin-right: 5.3%;
     transform: translate(0, -5%); 
     border-radius: 3%;
 }
 
 /* FORM FOR QUOTES */
 
+.input_box{
+    padding: 1% 15% ;
+    margin-bottom: 30px;
+}
+
+.input_box input {
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    padding: 8px 0 5px 0;
+    padding-top: 6%;
+
+}
+
+.input_box input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000000;
+}
+
+.input_label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.submit_button{
+    width: 100%;
+    float: center;
+}
