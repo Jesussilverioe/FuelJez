@@ -40,36 +40,70 @@
         <div style="font-family: Montserrat; font-size: 25px; font-weight: bolder; text-align: center; padding: 6% 0;">
             FUEL QUOTES
         </div>
-        <div class="message">
-            <i>Hi <span style="color:rgb(33, 51, 100)">Aryan</span>, fill in the form below to get your exclusive fuel quote.</i>
-        </div>
-
-        <div>
-            <form id="quote_form" method="POST" action="#">
-                <div class="input_box">
-                    <label class="input_label">Gallons Requested</label>
-                    <br>
-                    <input type="number" name="gallons_requested" min="1" required/>
-                </div>
-
-                <div class="input_box">
-                    <label class="input_label">Delivery Address</label>
-                    <br>
-                    <input type="text" name="delivery_address" required/>
-                </div>
-
-                <div class="input_box">
-                    <label class="input_label">Delivery Date</label>
-                    <br>
-                    <input type="text" name="delivery_date" onfocus="(this.type='date')"  required/>
-                </div>
-
-                <div class="submit_button">
-                    <button type="submit" class="btn">GET QUOTE</button>
-                </div>
-            </form>
+        
+        <div class="checkout_inside">
+            <div class="left">
+                No. of Gallons:
+                <br>
+                <br>
+                Delivery Address:
+                <br>
+                <br>
+                Delivery Date:
+                <br>
+            </div>
     
+            <div class="right">
+                12
+                <br>
+                <br>
+                123 Barcelona 
+                <br>
+                <br>
+                10/10/2000
+                <br>
+            </div>
+    
+            <hr class="checkout_hr">
+    
+            <div class="left">
+                Quote:
+                <br>
+                <br>
+                Estimated Tax:
+                <br>
+                <br>
+                Service Fees:
+                <br>
+            </div>
+    
+            <div class="right">
+                $200.00
+                <br>
+                <br>
+                $19.88 
+                <br>
+                <br>
+                $100.00
+                <br>
+            </div>
+    
+            <hr class="checkout_hr">
+    
+            <div class="left">
+                Total:
+            </div>
+    
+            <div class="right">
+                $200.00
+            </div>
+
+            <div style="text-align: center; transform: translate(0, -10%);">
+                <button type="submit" class="btn">CHECKOUT</button>
+            </div>
         </div>
+        
+
         
 
     </div>

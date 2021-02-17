@@ -70,11 +70,14 @@ nav a:hover::before {
 .quote_box{
     background-color: #18778cce;
     width: 32%;
-    min-height: 70vh;
+    height: 72vh;
     float: right;
     margin-right: 5.3%;
     transform: translate(0, -5%); 
     border-radius: 3%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.719);
+    
+
 }
 
 .message{
@@ -85,6 +88,7 @@ nav a:hover::before {
     padding: 0 15%;
     margin-bottom: 5%;
 }
+
 /* FORM FOR QUOTES */
 
 .input_box{
@@ -148,6 +152,38 @@ nav a:hover::before {
     outline: none;
 }
 
+/* CHECKOUT */
+
+.checkout_inside{
+    font-family: Montserrat;
+    font-size: 15px;
+    color: white;
+}
+.left{
+    padding: 10px 60px;
+    width: 30%;
+    float: left;
+}
+
+.right{
+    /* padding: 10px 60px; */
+    padding-top: 10px;
+    padding-right: 60px;
+    padding-bottom: 30px;
+    width: 30%;
+    text-align: right;
+    float: right;
+}
+
+.checkout_hr{
+    /* margin-top: 140px;
+    margin-bottom: 20px;
+    border-top:rgb(150, 150, 150); */
+    border-top:rgb(150, 150, 150);
+    margin-bottom: 20px;
+    width: 75%;
+}
+
 /* HISTORY */
 
 .history_box{
@@ -157,6 +193,8 @@ nav a:hover::before {
     margin-left: auto;
     height: 65vh;
     border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.89);
+
 }
 
 .history{
@@ -166,5 +204,107 @@ nav a:hover::before {
 .history_title{
     font-family: Montserrat;
     font-size: 25px; 
-    /* font-weight: bolder;  */
 }
+
+.content-table {
+    font-family: Lato;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    /* font-weight: bold; */
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
+  }
+  
+  .content-table thead tr {
+    /* background-color: #009879; */
+    color: #000000;
+    text-align: center;
+    font-weight: 100;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 32px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #ffffff70;
+  }
+  
+  .content-table tbody tr {
+    background-color: #f3f3f377;
+  }
+  
+  /* .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  } */
+  
+  .content-table tbody tr.active-row {
+    /* font-weight: bold; */
+    color: #009879;
+  }
+  
+
+/* FAQ */
+
+
+h1 {
+    margin-left: 24%;
+    padding-top: 20px;
+    font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 45px;
+  }
+  
+  .accordion {
+    width: 90%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+
+  }
+
+  .accordion-item {
+    background-color: #fff;
+    color: rgb(15, 15, 15);
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+  }
+  .accordion-item-header {
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    min-height: 3.5rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  .accordion-item-header::after {
+    content: "\002B";
+    /* font-size: 2rem; */
+    font-size: 25px;
+  
+    position: absolute;
+    right: 1rem;
+  }
+  .accordion-item-header.active::after {
+    content: "\2212";
+  }
+  .accordion-item-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  .accordion-item-body-content {
+    padding: 1rem;
+    line-height: 1.5rem;
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+  }
