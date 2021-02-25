@@ -1,1 +1,162 @@
 /* STYLE SHEET FOR SIGN UP, LOGIN, CREATE PROFILE PAGES */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.left {
+  background-color: white;
+  width: 50%;
+  height: 100vh;
+  float: left;
+}
+
+.logo {
+  padding-left: 20px;
+}
+
+.intro {
+  /* background-color: pink; */
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+  margin-top: 2%;
+  transform: translate(0, -12%);
+}
+
+.big {
+  font-size: 45px;
+  font-weight: bold;
+  color: #254075;
+}
+
+.small {
+  color: #727272;
+  font-size: 17px;
+  transform: translate(0, -70%);
+}
+
+.signin_box {
+  /* background-color: green; */
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+  width: 60%;
+  transform: translate(0, -18%);
+}
+
+.box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(221, 21, 21, 0.89);
+  border-radius: 3px;
+  padding: 70px 100px;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-container label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 16px;
+  color: #7c7c7c;
+  /* pointer-event:none; */
+  transition: all 0.5s ease-in-out;
+}
+
+.input-container input {
+  border: 0;
+  border-bottom: 1px solid rgb(146, 145, 145);
+  background: transparent;
+  width: 75%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.input-container input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e74c3c;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+  text-align: center;
+  background-color: rgb(255, 246, 192);
+}
+
+.btn:hover {
+  background-color: rgb(185, 185, 185);
+  transition: 0.3s;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+  top: -12px;
+  font-size: 12px;
+}
+
+.right {
+  width: 50%;
+  min-height: 100vh;
+  background-color: rgb(113, 202, 243);
+  float: right;
+}
+
+.homepage_img {
+  display: block;
+  margin: auto;
+  margin-top: 50%;
+  /* -ms-transform: translateY(-50%); */
+  transform: translateY(-50%);
+
+  width: 60%;
+}
+
+.flash_s {
+  margin-top: 20px;
+  color: rgb(245, 0, 0);
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.main_back {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f7f7;
+}
+
+.main_front {
+  width: 70%;
+  height: 100%;
+  background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .right {
+    display: none;
+  }
+  .left {
+    width: 100%;
+  }
+  .submit_button {
+    margin: auto;
+    width: 50%;
+  }
+  .left .big {
+    text-align: center;
+  }
+}
