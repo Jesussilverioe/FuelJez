@@ -1,0 +1,182 @@
+body{
+    background-color:#f1f1f1;
+}
+.ourTeam-hedding{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/gas_station.jpg');
+    height:200px;
+    width:100%;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background: linear-gradient(rgba(0,0,0,.10)); 
+}
+.ourTeam-hedding h1{
+    color:#fff;
+    padding:70px 0px;
+    font-weight:900;
+    z-index: 1;
+}
+.ourTeam-box{
+    border-top: 6px solid #638f87;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+.section1{
+    padding: 30px 0px 0px 0px;
+}
+.section1 img{
+    border:5px solid #40514e;
+    padding:5px;
+    border-radius:50%;
+    height:170px;
+    width: 170px;
+}
+.section2 h1{
+    font-size:20px;
+    color:#C1C1C1;
+    margin:0px;
+    border-bottom:2px solid #40514e;
+    display: inline-block;
+    padding: 10px 0px;
+}
+.section2 p{
+    background-color: #514040;
+    display: inline-block;
+    font-weight: bold;
+    color:#fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin-top: -20px;    
+}
+.section2 span{
+    color:#979597;
+}
+.section2 label{
+    background-color: #40514e;
+    padding: 8px 10px 8px 10px;
+    color:#fff;
+    font-weight: normal;
+    margin: 30px 0px 35px 0px;
+    border-radius: 2px;
+}
+.section3 p{
+    padding: 10px 15px 0px 15px;
+    font-size:12px;
+    color:#c3c9c9;
+}
+.section4{
+    padding:10px 0px 50px 0px;
+}
+.section4 i{
+    color:#fff;
+    padding:3px;
+    border-radius: 2px; 
+    font-size: 12px;
+    background-color: #40514e;
+    cursor: pointer;
+}
+.section-info{
+    border-top:6px solid #30e3ca;
+}
+.section-danger{
+    border-top:6px solid #f9e8e4;
+}
+.section-info .section1 img{
+    border:5px solid #30e3ca;
+    padding:5px;
+}
+.section-info .section2 p{
+    background-color: #30e3ca;
+    color:#fff;
+}
+.section-danger .section2 p{
+    background-color: #e4f9f5;
+    color:#fff;
+}
+.section-danger .section1 img{
+    border:5px solid #e4f9f5;
+    padding:5px;
+}
+.section-info .section4 i{
+    background-color: #30e3ca;  
+}
+.section-danger .section4 i{
+    background-color: #e4f9f5;  
+}
+.section-info .section2 h1{
+    border-bottom:2px solid #30e3ca;
+}
+.section-danger .section2 h1{
+    border-bottom:2px solid #e4f9f5;
+}
+
+.name{
+    font-family: 'Arvo', serif;
+    font-size: 95px;
+    color: rgb(0, 0, 0);
+    /* padding-bottom: 20px; */
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(12,end) forwards, blink 1s infinite;
+}
+
+@keyframes typing {
+    0% { width:0% }
+    100% { width:100% }
+  }
+  @keyframes blink {
+    0%,100% {
+      border-right:2px solid transparent;
+    }
+    50% {
+      border-right:2px solid rgb(0, 0, 0);
+    }
+}
+
+body {
+  margin: 0;
+  padding:0;
+  background: #a58e7e;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 30px;
+}
+nav{
+  flex: 1;
+  text-align: right;
+}
+nav ul{
+  display: inline-block;
+  list-style: none;
+}
+nav ul li{
+  display: inline-block;
+  margin-right: 70px;
+}
+nav ul li a{
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  font-family: sans-serif;
+}
+nav ul li button{
+  font-size: 20px;
+  color: white;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+nav ul li button:hover{
+  color: aqua;
+}
+nav ul li a:hover{
+  color: aqua;
+}
