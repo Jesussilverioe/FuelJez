@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("../images/gas_station.jpg");
+  background-size: cover;
+  background-position: absolute;
+  font-family: sans-serif;
+  background-size: 100% 100%;
+  filter: blur(200px);
+  -webkit-filter: blur(200px);
+}
+
