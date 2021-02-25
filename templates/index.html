@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/index.css">
-    <title>Sign Up</title>
-</head>
-<body>
-    
-</body>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}"> -->
+    <link rel="stylesheet" href="/static/styles/index.css" />
+
+    <title>Home</title>
+  </head>
+
+  <body>
+    <div class="left">
+      <img class="logo" src="/static/images/logo.png" />
+      <div class="intro">
+        <p class="big">Sign up today to get the best offer ever!</p>
+
+        <p class="small">
+          We offer the best quoutes in the marker!
+        </p>
+      </div>
+      <div class="signin_box">
+        <form id="signup_form" method="POST" action="#">
+          <div class="input-container">
+            <input type="text" name="name" required />
+            <label>Name</label>
+          </div>
+
+          <div class="input-container">
+            <input type="text" name="school" required />
+            <label>School</label>
+          </div>
+
+          <div class="input-container">
+            <input type="mail" name="email" required />
+            <label>Email</label>
+          </div>
+          <div class="input-container">
+            <input type="password" name="password" required />
+            <label>Password</label>
+          </div>
+          <div class="submit_button">
+            <button type="submit" class="btn">Sign up</button>
+          </div>
+          <span>
+            <p style="font-size: 15px; color: rgb(73, 71, 71)">
+              Already have an account?
+              <a href="{{ url_for('signin') }}">Sign in</a>
+            </p>
+          </span>
+        </form>
+      </div>
+    </div>
+    <div class="right">
+      <img class="homepage_img" src="/static/images/gas_station.jpg" />
+    </div>
+  </body>
 </html>
