@@ -1,43 +1,44 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
-.fullpage{
+.fullpage {
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/gas_station.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../images/gas_station.jpg");
   background-position: center;
   background-size: cover;
   position: absolute;
 }
-.navbar{
+.navbar {
   display: flex;
   align-items: center;
   padding: 20px;
   padding-left: 50px;
   padding-right: 30px;
+  margin-top: 15px;
 }
-nav{
+nav {
   flex: 1;
   text-align: right;
 }
-nav ul{
+nav ul {
   display: inline-block;
   list-style: none;
 }
-nav ul li{
+nav ul li {
   display: inline-block;
   margin-right: 70px;
 }
-nav ul li a{
+nav ul li a {
   text-decoration: none;
   font-size: 20px;
   color: white;
   font-family: sans-serif;
 }
-nav ul li button{
+nav ul li button {
   font-size: 20px;
   color: white;
   outline: none;
@@ -47,72 +48,97 @@ nav ul li button{
   font-family: sans-serif;
 }
 
-nav ul li button:hover{
+nav ul li button:hover {
   color: aqua;
 }
-nav ul li a:hover{
+nav ul li a:hover {
   color: aqua;
 }
-a{
+a {
   text-decoration: none;
   color: palevioletred;
   font-size: 28px;
 }
-#login-form{
+#login-form {
   display: none;
 }
-.form-box{
+#logo {
+  float: left;
+}
+#logo,
+img {
+  width: 150px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.form-box {
   width: 380px;
   height: 550px;
   position: relative;
   margin: 2% auto;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   padding: 10px;
   overflow: hidden;
 }
-.buttom-box{
+.buttom-box {
   width: 200px;
   margin: 35px auto;
   position: relative;
   box-shadow: 0 0 20px 9px #ff61241f;
-  border-radius: 30px; 
+  border-radius: 30px;
 }
-.toggle-btn{
-  margin-top: 2px;
-  margin-bottom: 0px;
-  margin-right: 50px;
-  margin-left: 50px;
-  
-  width: 50px;
+.toggle-btn-login {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 25px;
+  margin-left: 28px;
+
+  width: auto;
   cursor: pointer;
   background: transparent;
   border: 0;
   outline: none;
   position: relative;
+  display: inline-block;
 }
-#btn{
+.toggle-btn-register {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 0px;
+  margin-left: 35px;
+
+  width: auto;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  display: inline-block;
+}
+
+#btn {
   top: 0;
   left: 0;
   position: absolute;
-  width: 110px;
+  width: 90px;
   height: 100%;
-  background: #F3C693;
+  background: #f3c693;
   border-radius: 30px;
-  transition: .5s;
+  transition: 0.5s;
 }
-.input-group-login{
+.input-group-login {
   top: 120px;
   position: absolute;
   width: 280px;
-  transition: .5s;
+  transition: 0.5s;
 }
-.input-group-register{
+.input-group-register {
   top: 120px;
   position: absolute;
   width: 280px;
-  transition: .5s;
+  transition: 0.5s;
 }
-.input-field{
+.input-field {
   width: 100%;
   padding: 10px 0;
   margin: 5px 0;
@@ -123,37 +149,37 @@ a{
   outline: none;
   background: transparent;
 }
-.submit-btn{
+.submit-btn {
   width: 85%;
   padding: 10px 30px;
   cursor: pointer;
   display: block;
   margin: auto;
-  background: #F3C693;
+  background: #f3c693;
   border: 0;
   outline: none;
   border-radius: 30px;
 }
-.check-box{
+.check-box {
   margin: 30px 10px 34px 0;
 }
-span{
+span {
   color: #777;
   font-size: 12px;
   bottom: 68px;
   position: absolute;
 }
-#login{
+#login {
   left: 50px;
 }
-#login input{
+#login input {
   color: white;
   font-size: 15;
 }
-#register{
+#register {
   left: 450px;
 }
-#register input{
+#register input {
   color: white;
   font-size: 15;
 }
