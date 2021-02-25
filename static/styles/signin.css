@@ -1,12 +1,89 @@
 body {
   margin: 0;
   padding: 0;
-  background: url("../images/gas_station.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/gas_station.jpg');
   background-size: cover;
-  background-position: absolute;
+  background-position: center;
   font-family: sans-serif;
-  background-size: 100% 100%;
-  filter: blur(200px);
-  -webkit-filter: blur(200px);
 }
 
+.signin_box {
+    width: 320px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    transform: translate(-10px);
+}
+/* for additional text h1 */
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.signin_box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.signin_box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.signin_box input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.signin_box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.signin_box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.signin_box a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.signin_box a:hover
+{
+    color: #ffc107;
+}
