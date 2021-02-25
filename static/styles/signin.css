@@ -10,7 +10,9 @@ body {
 .signin_box {
     width: 320px;
     height: 420px;
-    background: rgba(0, 0, 0, 0.3);
+    /* background: rgba(145, 115, 115, 0.3); OPTION 1 */
+    background: #EAECF3;
+    /*filter:opacity(70%); OPTION 2 */
     border-radius: 25px;
     color: #fff;
     top: 50%;
@@ -56,14 +58,15 @@ h1 {
     height: 40px;
     color: #fff;
     font-size: 16px;
+    filter: brightness(150%);
 }
 
 .signin_box input[type="submit"]
 {
     border: none;
     outline: none;
-    height: 40px;
-    background: #fb2525;
+    height: 35px;
+    background: #AA9D28;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
