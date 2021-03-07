@@ -1,56 +1,82 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}"> -->
-    <link rel="stylesheet" href="/static/styles/index.css" />
+<html lang="en">
 
-    <title>Home</title>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../static/styles/register.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/register.css') }}">
 
-  <body>
-    <div class="left">
-      <img class="logo" src="/static/images/logo.png" />
-      <div class="intro">
-        <p class="big">Sign up today to get the best offer ever!</p>
+    <title>Document</title>
+</head>
 
-        <p class="small">
-          We offer the best quoutes in the marker!
-        </p>
-      </div>
-      <div class="signin_box">
-        <form id="signup_form" method="POST" action="#">
-          <div class="input-container">
-            <input type="text" name="name" required />
-            <label>Name</label>
-          </div>
-
-          <div class="input-container">
-            <input type="text" name="school" required />
-            <label>School</label>
-          </div>
-
-          <div class="input-container">
-            <input type="mail" name="email" required />
-            <label>Email</label>
-          </div>
-          <div class="input-container">
-            <input type="password" name="password" required />
-            <label>Password</label>
-          </div>
-          <div class="submit_button">
-            <button type="submit" class="btn">Sign up</button>
-          </div>
-          <span>
-            <p style="font-size: 15px; color: rgb(73, 71, 71)">
-              Already have an account?
-              <a href="{{ url_for('signin') }}">Sign in</a>
-            </p>
-          </span>
-        </form>
-      </div>
+<body>
+    <div class="fullpage">
+        <div id="logo">
+            <a href="../templates/register_page.html"><img src="../static/images/logo.png" alt=""></a>
+        </div>
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="../templates/register_page.html">Home</a></li>
+                    <li><a href="../templates/meettheteam.html">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'"
+                            style="width:auto;">Login</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="login-form" class="login-page">
+            <div class="form-box">
+                <div class="buttom-box">
+                    <div id="btn"></div>
+                    <button type="button" onclick="login()" class="toggle-btn-login">Log In</button>
+                    <button type="button" onclick="register()" class="toggle-btn-register">Register</button>
+                </div>
+                <form id="login" class="input-group-login">
+                    <input type="text" class="input-field" placeholder="Email">
+                    <input type="password" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember Password</span>
+                    <button type="submit" class="submit-btn">Log in</button>
+                </form>
+                <form id="register" class="input-group-register">
+                    <input type="text" class="input-field" placeholder="First Name">
+                    <input type="text" class="input-field" placeholder="Last Name">
+                    <input type="email" class="input-field" placeholder="Email">
+                    <input type="password" class="input-field" placeholder="Enter Password">
+                    <input type="password" class="input-field" placeholder="Confirm Password">
+                    <input type="checkbox" class="check-box"><span>I agree to the terms and conditions of
+                        service.</span>
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="right">
-      <img class="homepage_img" src="/static/images/gas_station.jpg" />
-    </div>
-  </body>
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+        function register() {
+            x.style.left = '-400px';
+            y.style.left = '50px';
+            z.style.left = '110px';
+        }
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '0px';
+        }
+    </script>
+    <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
 </html>
