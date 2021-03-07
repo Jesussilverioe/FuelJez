@@ -4,7 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Profile</title>
-    <link rel="stylesheet" href="../static/styles/create_profile.css">
+    <!-- <link rel="stylesheet" href="../static/styles/create_profile.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/create_profile.css') }}">
+
     
 </head>
 <body>
@@ -14,7 +16,7 @@
         </div>
         <div class="column">
             <h1 style="color: black; font-family: Yeseva One;">CREATE YOUR PROFILE</h1>
-            <form method="POST" action="#">
+            <form method="POST">
                 <label for="fullname" style="color: 8D8181; font-family: Arial;">Full Name</label>
                 <input type="text"  name="fullname" required>
                 <label for="address1" style="color: 8D8181; font-family: Arial;">Address 1</label>

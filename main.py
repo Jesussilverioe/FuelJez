@@ -38,9 +38,10 @@ def create_profile():
         session['address2'] = request.form['address2']
         session['state'] = request.form['state']
         session['zipcode'] = request.form['zipcode']
-        print(session)
+        # print(session)
 
-        return render_template("quotes.html", fullname = session["fullname"], address1 = session["address1"], address2 = session["address2"], state = session["state"], zipcode = session["zipcode"])
+        # return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
+        return redirect(url_for("quotes"))
     else:
         return render_template("create_profile.html")
 
@@ -51,16 +52,17 @@ def quotes():
         session['gallons_requested'] = request.form['gallons_requested']
         session['delivery_address'] = request.form['delivery_address']
         session['delivery_date'] = request.form['delivery_date']  
-
-        return render_template("checkout.html", gallons_requested = session['gallons_requested'], delivery_address = session['delivery_address'])
+        return redirect(url_for("checkout"))
     else:
-        return render_template("index.html")
+        return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
 
 
 @app.route("/checkout", methods=["POST", "GET"])
 def checkout():
-
-    return render_template("checkout.html")
+    if request.method == "POST":
+        return redirect(url_for("quotes"))
+    else:
+        return render_template("checkout.html", gallons_requested = session['gallons_requested'], delivery_address = session['delivery_address'], delivery_date = session['delivery_date'])
     # if request.method == "POST":
     #     session['gallons_requested'] = request.form['gallons_requested']
     #     session['delivery_address'] = request.form['delivery_address']

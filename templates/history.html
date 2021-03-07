@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/home.css">
+    <!-- <link rel="stylesheet" href="/static/styles/home.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -18,11 +19,11 @@
         </a>
 
         <nav>
-            <ul>
-                <li><a href="quotes.html">Home</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+          <ul>
+            <li><a href="{{ url_for('quotes') }}">Home</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+          </ul>
         </nav>
     </header>
 
