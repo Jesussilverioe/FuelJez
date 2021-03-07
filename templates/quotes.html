@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/home.css">
-    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css') }}"> -->
+    <!-- <link rel="stylesheet" href="/static/styles/home.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css') }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
             FUEL QUOTES
         </div>
         <div class="message">
-            <i>Hi <span style="color:rgb(33, 51, 100)">Aryan</span>, fill in the form below to get your exclusive fuel quote.</i>
+            <i>Hi <span style="color:rgb(33, 51, 100)">{{fullname}}</span>, fill in the form below to get your exclusive fuel quote.</i>
         </div>
 
         <div>
@@ -55,7 +55,7 @@
                 <div class="input_box">
                     <label class="input_label">Delivery Address</label>
                     <br>
-                    <input type="text" name="delivery_address" required/>
+                    <input type="text" name="delivery_address" value="{{address1}}, {{state}}" required/>
                 </div>
 
                 <div class="input_box">
@@ -67,11 +67,8 @@
                 <div class="submit_button">
                     <button type="submit" class="btn">GET QUOTE</button>
                 </div>
-            </form>
-    
+            </form> 
         </div>
-        
-
     </div>
 
     
