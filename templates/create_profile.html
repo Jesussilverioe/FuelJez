@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Profile</title>
     <link rel="stylesheet" href="../static/styles/create_profile.css">
+    
 </head>
 <body>
     <div class="signin_box" class="row">
@@ -13,7 +14,7 @@
         </div>
         <div class="column">
             <h1 style="color: black; font-family: Yeseva One;">CREATE YOUR PROFILE</h1>
-            <form>
+            <form method="POST" action="#">
                 <label for="fullname" style="color: 8D8181; font-family: Arial;">Full Name</label>
                 <input type="text"  name="fullname" required>
                 <label for="address1" style="color: 8D8181; font-family: Arial;">Address 1</label>
@@ -24,8 +25,13 @@
                 <input type="text"  name="state" required>
                 <label for="zipcode" style="color: 8D8181; font-family: Arial;">Zipcode</label>
                 <input type="text"  name="zipcode" required>
-                <input type="checkbox" class="check-box"><span>I agree to the terms and conditions of
-                        service.</span>
+
+                <!-- <input type="checkbox" name="check-box" class="check-box">
+                 -->
+                
+                <br>
+                <br>
+                <br>
                 <input type="submit" value="FINISH PROFILE">
             </form>
         </div>

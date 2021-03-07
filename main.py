@@ -24,6 +24,12 @@ def genID(length):
     id = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(length)])
     return id
 
+
+@app.route("/", methods=["POST", "GET"])
+def index():
+    return render_template("index.html")
+
+
 @app.route("/create_profile", methods=["POST", "GET"])
 def create_profile():
     if request.method == "POST":
@@ -32,6 +38,7 @@ def create_profile():
         session['address2'] = request.form['address2']
         session['state'] = request.form['state']
         session['zipcode'] = request.form['zipcode']
+        print(session)
 
         return render_template("quotes.html", fullname = session["fullname"], address1 = session["address1"], address2 = session["address2"], state = session["state"], zipcode = session["zipcode"])
     else:
