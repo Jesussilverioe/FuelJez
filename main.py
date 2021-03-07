@@ -27,7 +27,13 @@ def genID(length):
 @app.route("/create_profile", methods=["POST", "GET"])
 def create_profile():
     if request.method == "POST":
-        
+        session['fullname'] = request.form['fullname']
+        session['address1'] = request.form['address1']
+        session['address2'] = request.form['address2']
+        session['state'] = request.form['state']
+        session['zipcode'] = request.form['zipcode']
+
+        return render_template("quotes.html", fullname = session["fullname"], address1 = session["address1"], address2 = session["address2"], state = session["state"], zipcode = session["zipcode"])
     else:
         return render_template("create_profile.html")
 
