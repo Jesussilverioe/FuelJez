@@ -76,6 +76,14 @@ def checkout():
     #     return render_template("checkout.html")
 
 
+@app.route("/history", methods=["POST", "GET"])
+def history():
+    return render_template("history.html")
+
+@app.route("/faq", methods=["POST", "GET"])
+def faq():
+    return render_template("faq.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
