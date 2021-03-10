@@ -35,18 +35,18 @@
                     <button type="button" onclick="login()" class="toggle-btn-login">Log In</button>
                     <button type="button" onclick="register()" class="toggle-btn-register">Register</button>
                 </div>
-                <form id="login" class="input-group-login">
-                    <input type="text" class="input-field" placeholder="Email">
-                    <input type="password" class="input-field" placeholder="Enter Password" required>
+                <form id="login" class="input-group-login" method="POST" action="#">
+                    <input type="text" name="login-email" class="input-field" placeholder="Email">
+                    <input type="password" name="login-password" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="check-box"><span>Remember Password</span>
                     <button type="submit" class="submit-btn">Log in</button>
                 </form>
-                <form id="register" class="input-group-register">
-                    <input type="text" class="input-field" placeholder="First Name">
-                    <input type="text" class="input-field" placeholder="Last Name">
-                    <input type="email" class="input-field" placeholder="Email">
-                    <input type="password" class="input-field" placeholder="Enter Password">
-                    <input type="password" class="input-field" placeholder="Confirm Password">
+                <form id="register" class="input-group-register" method="POST" action="#">
+                    <input type="text" name="fname" class="input-field" placeholder="First Name">
+                    <input type="text" name="lname" class="input-field" placeholder="Last Name">
+                    <input type="email" name="register-email" class="input-field" placeholder="Email">
+                    <input type="password" name="register-password" class="input-field" placeholder="Enter Password">
+                    <input type="password" name="register-password2" class="input-field" placeholder="Confirm Password">
                     <input type="checkbox" class="check-box"><span>I agree to the terms and conditions of
                         service.</span>
                     <button type="submit" class="submit-btn">Register</button>
