@@ -18,10 +18,7 @@
         <div class="navbar">
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="../templates/register_page.html">Home</a></li>
-                    <li><a href="../templates/meettheteam.html">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'"
                             style="width:auto;">Login</button>
                     </li>
@@ -42,8 +39,6 @@
                     <button type="submit" class="submit-btn">Log in</button>
                 </form>
                 <form id="register" class="input-group-register" method="POST" action="#">
-                    <input type="text" name="fname" class="input-field" placeholder="First Name">
-                    <input type="text" name="lname" class="input-field" placeholder="Last Name">
                     <input type="email" name="register-email" class="input-field" placeholder="Email">
                     <input type="password" name="register-password" class="input-field" placeholder="Enter Password">
                     <input type="password" name="register-password2" class="input-field" placeholder="Confirm Password">
