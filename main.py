@@ -28,16 +28,14 @@ def genID(length):
 @app.route("/", methods=["POST", "GET"])
 def index():
   if request.method == "POST":
-        if not session['fname']:
+        if not session['register-email']:
           session['login-email'] = request.form['login-email']
           session['login-password'] = request.form['login-password']
-        if not session['login-email']:
-          session['fname'] = request.form['fname']
-          session['lname'] = request.form['lname']
+        elif not session['login-email']:
           session['register-email'] = request.form['register-email']
           session['register-password'] = request.form['register-password']
           session['register-password2'] = request.form['register-password2']
-
+       
         # print(session)
 
         # return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
