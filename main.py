@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template, request, url_for, redirect, g, session, flash
 import sqlite3
+import pytest
 import random, string
 from decimal import Decimal
 
