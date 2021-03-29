@@ -1,0 +1,14 @@
+CREATE TABLE Profilee(
+    unique_id INT PRIMARY KEY,
+    fullname VARCHAR(255)
+);
+
+CREATE TABLE History (
+    order_no INT NOT NULL PRIMARY KEY,
+    order_date INT NOT NULL,
+    FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id), 
+    delivery_address VARCHAR(255),
+    delivery_date VARCHAR(255),
+    gallons_delivered INT NOT NULL,
+    price INT NOT NULL
+);
