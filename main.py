@@ -74,8 +74,19 @@ def create_profile():
         session['state'] = request.form['state']
         session['zipcode'] = request.form['zipcode']
         # print(session)
+        unique_id = genUniqueID(8)
+        session['unique_id'] = unique_id
+        
 
-        # return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
+        conn = create_connection()
+        cursor = conn.cursor()
+
+        command = f"INSERT INTO Profile VALUES('{unique_id}', '{session['fullname']}', '{session['address1']}', '{session['address2']}', '{session['state']}', {session['zipcode']})"
+        # command = "INSERT INTO Profile"
+        cursor.execute(command)
+
+        cursor.execute('SELECT * FROM Profile;')
+        print(cursor.fetchall())
         return redirect(url_for("quotes"))
     else:
         return render_template("create_profile.html")
@@ -103,7 +114,7 @@ def checkout():
         order_no = genON(8)
         price = 0
 
-        command = f"INSERT INTO history VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {price} )"
+        command = f"INSERT INTO history VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {price}, '{session['unique_id']}' )"
         # command = "INSERT INTO history VALUES( 123, '10/10/2000', '7005 BELLING tx', '10/12/2000', 10, 1000)"
         cursor.execute(command)
 

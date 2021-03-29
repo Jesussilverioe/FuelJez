@@ -1,14 +1,22 @@
-CREATE TABLE Profilee(
-    unique_id INT PRIMARY KEY,
-    fullname VARCHAR(255)
+DROP TABLE Profile;
+DROP TABLE History;
+
+CREATE TABLE Profile(
+    unique_id VARCHAR(255) PRIMARY KEY,
+    fullname VARCHAR(255) NOT NULL,
+    address1  VARCHAR(255) NOT NULL,
+    address2 VARCHAR(255),
+    state VARCHAR(255) NOT NULL,
+    zipcode INT NOT NULL
 );
 
 CREATE TABLE History (
     order_no INT NOT NULL PRIMARY KEY,
     order_date INT NOT NULL,
-    FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id), 
     delivery_address VARCHAR(255),
     delivery_date VARCHAR(255),
     gallons_delivered INT NOT NULL,
-    price INT NOT NULL
+    price INT NOT NULL,
+    unique_id VARCHAR(255),
+    FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id) 
 );
