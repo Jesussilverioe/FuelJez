@@ -81,11 +81,11 @@ def create_profile():
         cursor = conn.cursor()
 
         command = f"INSERT INTO Profile VALUES('{unique_id}', '{session['fullname']}', '{session['address1']}', '{session['address2']}', '{session['state']}', {session['zipcode']})"
-        # command = "INSERT INTO Profile"
         cursor.execute(command)
 
-        cursor.execute('SELECT * FROM Profile;')
-        print(cursor.fetchall())
+        # cursor.execute('SELECT * FROM Profile;')
+        # print(cursor.fetchall())
+        cursor.close()
         return redirect(url_for("quotes"))
     else:
         return render_template("create_profile.html")
@@ -110,36 +110,37 @@ def checkout():
         conn = create_connection()
         cursor = conn.cursor()
 
-        order_no = genON(8)
+        order_no = int(genON(8))
         price = 0
 
-        command = f"INSERT INTO history VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {price}, '{session['unique_id']}' )"
-        # command = "INSERT INTO history VALUES( 123, '10/10/2000', '7005 BELLING tx', '10/12/2000', 10, 1000)"
+        command = f"INSERT INTO History VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {price}, '{session['unique_id']}' )"
+        # command = f"INSERT INTO history VALUES( 123, '10/10/2000', '7005 BELLING tx', '10/12/2000', 10, 1000, '{session['unique_id']}')"
         cursor.execute(command)
 
         command = f"SELECT * FROM history;"
         cursor.execute(command)
 
-        print(cursor.fetchall())
+        print("historyy during checkout ", cursor.fetchall())
         cursor.close()
         return redirect(url_for("quotes"))
     else:
         return render_template("checkout.html", gallons_requested = session['gallons_requested'], delivery_address = session['delivery_address'], delivery_date = session['delivery_date'])
-    # if request.method == "POST":
-    #     session['gallons_requested'] = request.form['gallons_requested']
-    #     session['delivery_address'] = request.form['delivery_address']
-    #     session['delivery_date'] = request.form['delivery_date']  
-
-    #     print(session)
-    #     return redirect(url_for("checkout"))
-
-
-    # else:
-    #     return render_template("checkout.html")
-
 
 @app.route("/history", methods=["POST", "GET"])
 def history():
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    command = f"SELECT * FROM history;"
+    cursor.execute(command)
+
+    # history_list = cursor.fetchall()
+    print("historyy during quotes ",cursor.fetchall())
+    command = "SELECT * FROM Profile;"
+    cursor.execute(command)
+    # history_list = cursor.fetchall()
+    print("profile during quotes", cursor.fetchall())
+    cursor.close()
     return render_template("history.html")
 
 @app.route("/faq", methods=["POST", "GET"])
