@@ -49,7 +49,6 @@ def index():
     
     if request.method == "POST":
 
-        cursor.execute("CREATE TABLE History ( order_no INT NOT NULL PRIMARY KEY,order_date INT NOT NULL,FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id), delivery_address VARCHAR(255),delivery_date VARCHAR(255),gallons_delivered INT NOT NULL,price INT NOT NULL)")
         if not session['register-email']:
             session['login-email'] = request.form['login-email']
             session['login-password'] = request.form['login-password']
