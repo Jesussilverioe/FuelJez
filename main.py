@@ -94,15 +94,26 @@ def create_profile():
 
 @app.route("/quotes", methods=["POST", "GET"])
 def quotes():
+    conn = create_connection()
+    cursor = conn.cursor()
+    command = f"SELECT address1, address2 FROM Profile WHERE unique_id LIKE '%{session['unique_id']}%';"
+
+    cursor.execute(command)
+    temp = cursor.fetchall()
+
+    address = temp[0][0] + " " + temp[0][1]
+    print(address)
+
     if request.method == "POST":
         session['gallons_requested'] = request.form['gallons_requested']
         session['delivery_address'] = request.form['delivery_address']
         session['delivery_date'] = request.form['delivery_date']
         
         
+        
         return redirect(url_for("checkout"))
     else:
-        return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
+        return render_template("quotes.html", fullname = session['fullname'], address = address, state = session['state'], zipcode = session['zipcode'])
 
 
 @app.route("/checkout", methods=["POST", "GET"])
@@ -129,17 +140,14 @@ def history():
     conn = create_connection()
     cursor = conn.cursor()
 
-    command = f"SELECT * FROM history;"
+    command = f"SELECT * FROM history WHERE unique_id LIKE '%{session['unique_id']}%'"
     cursor.execute(command)
 
-    # history_list = cursor.fetchall()
-    print("historyy during quotes ",cursor.fetchall())
-    command = "SELECT * FROM Profile;"
-    cursor.execute(command)
-    # history_list = cursor.fetchall()
-    print("profile during quotes", cursor.fetchall())
+    history_list = cursor.fetchall()
+    # print(history_list)
+
     cursor.close()
-    return render_template("history.html")
+    return render_template("history.html", history_list = history_list)
 
 @app.route("/faq", methods=["POST", "GET"])
 def faq():

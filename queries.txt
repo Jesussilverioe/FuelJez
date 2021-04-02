@@ -3,9 +3,8 @@ DROP TABLE History;
 
 
 
-
 CREATE TABLE Profile(
-    unique_id VARCHAR(255) PRIMARY KEY,
+    unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
     fullname VARCHAR(255) NOT NULL,
     address1  VARCHAR(255) NOT NULL,
     address2 VARCHAR(255),
@@ -20,6 +19,6 @@ CREATE TABLE History (
     delivery_date VARCHAR(255),
     gallons_delivered INT NOT NULL,
     price INT NOT NULL,
-    unique_id VARCHAR(255),
+    unique_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id) 
 );
