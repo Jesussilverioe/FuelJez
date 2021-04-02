@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template, request, url_for, redirect, g, session, flash
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
 import pytest
 import random, string
 from decimal import Decimal
@@ -15,6 +16,7 @@ from decimal import Decimal
 #         print("Page No: " + str(1 + pdfRead.getPageNumber(page)))
 #         pageContent = page.extractText()
 #         print(pageContent)
+
 
 
 app = Flask(__name__)
@@ -35,14 +37,10 @@ def create_connection():
     :param db_file: database file
     :return: Connection object or None
     """
-    conn = None
-    try:
-        conn = sqlite3.connect("database.db")
-        return conn
-    except Error as e:
-        print(e)
-
-    return conn
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect('database.db')
+    return db
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -83,8 +81,11 @@ def create_profile():
         command = f"INSERT INTO Profile VALUES('{unique_id}', '{session['fullname']}', '{session['address1']}', '{session['address2']}', '{session['state']}', {session['zipcode']})"
         cursor.execute(command)
 
-        # cursor.execute('SELECT * FROM Profile;')
-        # print(cursor.fetchall())
+        # command = f"SELECT * FROM profile;"
+        # cursor.execute(command)
+
+        # print("Profile during profile ", cursor.fetchall())
+        conn.commit()
         cursor.close()
         return redirect(url_for("quotes"))
     else:
@@ -117,10 +118,7 @@ def checkout():
         # command = f"INSERT INTO history VALUES( 123, '10/10/2000', '7005 BELLING tx', '10/12/2000', 10, 1000, '{session['unique_id']}')"
         cursor.execute(command)
 
-        command = f"SELECT * FROM history;"
-        cursor.execute(command)
-
-        print("historyy during checkout ", cursor.fetchall())
+        conn.commit()
         cursor.close()
         return redirect(url_for("quotes"))
     else:
