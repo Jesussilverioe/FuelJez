@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pytest
 import random, string
 from decimal import Decimal
+from flask_bcrypt import bcrypt
 
 # def fileReader():
 #     pdfName = "old/file.pdf"
@@ -46,14 +47,40 @@ def create_connection():
 def index():
     
     if request.method == "POST":
+        # if not session['register-email']:
+        #   print('is here')
+        #   session['login-email'] = request.form['login-email']
+        #   session['login-password'] = request.form['login-password']
 
-        if not session['register-email']:
-            session['login-email'] = request.form['login-email']
-            session['login-password'] = request.form['login-password']
-        elif not session['login-email']:
-            session['register-email'] = request.form['register-email']
-            session['register-password'] = request.form['register-password']
-            session['register-password2'] = request.form['register-password2']
+        # elif not session['login-email']:
+        session['register-email'] = request.form['register-email']
+        emailt = session['register-email']
+        conn = create_connection()
+        cursor = conn.cursor()
+        command = f"SELECT COUNT(*) FROM LOGIN WHERE email LIKE '%{emailt}%';"
+        cursor.execute(command)
+        count = cursor.fetchone()[0]
+        if count > 0:
+          return render_template("index.html")
+          
+
+        session['register-password'] = request.form['register-password']
+        session['register-password2'] = request.form['register-password2']
+        hashedmapa = bcrypt.hashpw(str(session['register-password']).encode('utf-8'), bcrypt.gensalt())
+        print(hashedmapa)
+        hashedmapa = str(hashedmapa)
+        print(hashedmapa)
+        uniqid = genUniqueID(8)
+        emailt = str(session['register-email'])
+        print(hashedmapa)
+        conn = create_connection()
+        cursor = conn.cursor()
+        command = f'INSERT INTO Login VALUES("{uniqid}", "{emailt}", "{hashedmapa}")'
+        cursor.execute(command)
+        conn.commit()
+        cursor.close()
+
+
         
         # print(session)
         # return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])

@@ -1,7 +1,11 @@
 DROP TABLE Profile;
 DROP TABLE History;
 
-
+CREATE TABLE Login(
+    unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password STRING(255) NOT NULL
+);
 
 CREATE TABLE Profile(
     unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
