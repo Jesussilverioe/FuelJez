@@ -1,9 +1,9 @@
+DROP TABLE Login;
 DROP TABLE Profile;
 DROP TABLE History;
 
 CREATE TABLE Login(
-    unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL PRIMARY KEY,
     password STRING(255) NOT NULL
 );
 
@@ -13,7 +13,9 @@ CREATE TABLE Profile(
     address1  VARCHAR(255) NOT NULL,
     address2 VARCHAR(255),
     state VARCHAR(255) NOT NULL,
-    zipcode INT NOT NULL
+    zipcode INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    FOREIGN KEY (email) REFERENCES Login(email) 
 );
 
 CREATE TABLE History (
@@ -24,5 +26,5 @@ CREATE TABLE History (
     gallons_delivered INT NOT NULL,
     price INT NOT NULL,
     unique_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (unique_id) REFERENCES Profilee(unique_id) 
+    FOREIGN KEY (unique_id) REFERENCES Profile(unique_id) 
 );
