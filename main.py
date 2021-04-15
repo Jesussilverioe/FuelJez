@@ -126,7 +126,7 @@ def signin():
         temp = cursor.fetchall()
 
         session['fullname'] = temp[0][0]
-        session['fulladdress'] = temp[0][1] + temp[0][2]
+        session['fulladdress'] = temp[0][1] + ' ' + temp[0][2]
         session['state'] = temp[0][3]
         
 
