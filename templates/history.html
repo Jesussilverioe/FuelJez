@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <a href="quotes.html">
+        <a href="{{ url_for('quotes') }}">
             <img src = "/static/images/logo-175x175.png" alt ="logo" class="logo">
         </a>
 
@@ -53,41 +53,10 @@
                       <td>{{ order[2] }}</td>
                       <td>{{ order[3] }}</td>
                       <td>{{ order[4] }}</td>
-                      <td>{{ order[5] }}</td>
+                      <td>${{ order[5] }}</td>
                     </tr>
                   {% endfor %}
-                  <!-- <tr>
-                    <td>1234123</td>
-                    <td>10/10/2000</td>
-                    <td>123 Barcelona St, Austin TX</td>
-                    <td>10/11/2020</td>
-                    <td>10</td>
-                    <td>$100.99</td>
-                  </tr>
-                  <tr>
-                    <td>1234123</td>
-                    <td>10/10/2000</td>
-                    <td>123 Barcelona St, Austin TX</td>
-                    <td>10/11/2020</td>
-                    <td>10</td>
-                    <td>$100.99</td>
-                  </tr>
-                  <tr>
-                    <td>1234123</td>
-                    <td>10/10/2000</td>
-                    <td>123 Barcelona St, Austin TX</td>
-                    <td>10/11/2020</td>
-                    <td>10</td>
-                    <td>$100.99</td>
-                  </tr>
-                  <tr>
-                    <td>1234123</td>
-                    <td>10/10/2000</td>
-                    <td>123 Barcelona St, Austin TX</td>
-                    <td>10/11/2020</td>
-                    <td>10</td>
-                    <td>$100.99</td>
-                  </tr> -->
+
                   
                 </tbody>
               </table>

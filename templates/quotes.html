@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <a href="quotes.html">
+        <a href="{{ url_for('quotes') }}">
             <img src = "/static/images/logo-175x175.png" alt ="logo" class="logo">
         </a>
 
@@ -24,6 +24,7 @@
                 <li><a href="{{ url_for('quotes') }}">Home</a></li>
                 <li><a href="{{ url_for('history') }}">History</a></li>
                 <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                <li><a href="{{ url_for('signin') }}">LOGOUT</a></li>
             </ul>
         </nav>
     </header>

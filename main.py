@@ -7,21 +7,38 @@ import random, string
 from decimal import Decimal
 from flask_bcrypt import bcrypt
 
-# def fileReader():
-#     pdfName = "old/file.pdf"
-
-#     pdfRead = PyPDF2.PdfFileReader(pdfName)
-
-#     for i in range(pdfRead.getNumPages()):
-#         page = pdfRead.getPage(i)
-#         print("Page No: " + str(1 + pdfRead.getPageNumber(page)))
-#         pageContent = page.extractText()
-#         print(pageContent)
-
-
-
 app = Flask(__name__)
 app.secret_key = "123"
+# CAN CREATE TO WHERE ONCE REGISTERED ADD VALS TO PROFILE RIGHT AWAY AND IF NOT FILLED OUT, WHEN LOGGING IN THEY CAN FINSIH CREATING THEIR PROFILE
+
+def getPrice(location, rate_hist, gallons_req):
+    current_price = 1.50
+    factors = 0.00
+    if location == 'TX':
+        factors += .02
+    else:
+        factors += .04
+    
+    if rate_hist >= 1:
+        factors -= .01
+    
+    if gallons_req > 1000:
+        factors += .02
+    else:
+        factors += .03
+        
+    factors += .10
+
+    margin = factors * current_price
+    suggested_price = margin + current_price
+    
+    temp = float(suggested_price * gallons_req)
+    total = '{0:.2f}'.format(float(temp))
+
+    arr = [margin, suggested_price, total]
+    return arr
+
+# 1500 gallons requested, in state, does have history (i.e. quote history data exist in DB for this client)
 
 
 def genUniqueID(length):
@@ -42,6 +59,7 @@ def create_connection():
     if db is None:
         db = g._database = sqlite3.connect('database.db')
     return db
+
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -165,24 +183,46 @@ def create_profile():
 def quotes():
     conn = create_connection()
     cursor = conn.cursor()
-    command = f"SELECT address1, address2 FROM Profile WHERE unique_id LIKE '%{session['unique_id']}%';"
+    command = f"SELECT address1, address2 FROM Profile WHERE unique_id IS '{session['unique_id']}';"
 
     cursor.execute(command)
     temp = cursor.fetchall()
 
     address = temp[0][0] + " " + temp[0][1]
-    print(address)
 
     if request.method == "POST":
         session['gallons_requested'] = request.form['gallons_requested']
         session['delivery_address'] = request.form['delivery_address']
         session['delivery_date'] = request.form['delivery_date']
-        
-        
+        command = f"SELECT state FROM Profile WHERE email IS '{session['email']}';"
+        cursor.execute(command)
+
+        location = cursor.fetchone()[0]
+                
+        command = f"SELECT COUNT(*) FROM History INNER JOIN Profile ON history.unique_id = profile.unique_id WHERE profile.email IS '{session['email']}'"
+        cursor.execute(command)
+        rate = cursor.fetchone()[0]
+        print("the rate is: ", rate)
+
+        print(command)
+        cursor.execute(command)
+        temp = cursor.fetchall()
+        for el in temp:
+            print(el)
+
+        gallons = float(session['gallons_requested'])
+
+        arr = getPrice(location, rate, gallons)
+
+        temp = arr[0] * 100
+        session['fees'] = '{0:.2f}'.format(float(temp))
+        session['suggested_price'] = arr[1]
+        session['total_price'] = arr[2]
+
         
         return redirect(url_for("checkout"))
     else:
-        return render_template("quotes.html", fullname = session['fullname'], address = address, state = session['state'], zipcode = session['zipcode'])
+        return render_template("quotes.html", fullname = session['fullname'], address = session['fulladdress'], state = session['state'], zipcode = session['zipcode'])
 
 
 @app.route("/checkout", methods=["POST", "GET"])
@@ -192,24 +232,25 @@ def checkout():
         cursor = conn.cursor()
 
         order_no = int(genON(8))
-        price = 0
 
-        command = f"INSERT INTO History VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {price}, '{session['unique_id']}' )"
-        # command = f"INSERT INTO history VALUES( 123, '10/10/2000', '7005 BELLING tx', '10/12/2000', 10, 1000, '{session['unique_id']}')"
+        command = f"INSERT INTO History VALUES( {order_no}, DATE('now', 'localtime'), '{session['delivery_address']}', '{session['delivery_date']}', {session['gallons_requested']}, {float(session['total_price'])}, '{session['unique_id']}' )"
         cursor.execute(command)
 
         conn.commit()
         cursor.close()
+
+        
         return redirect(url_for("quotes"))
     else:
-        return render_template("checkout.html", gallons_requested = session['gallons_requested'], delivery_address = session['delivery_address'], delivery_date = session['delivery_date'])
+        
+        return render_template("checkout.html", suggested_price = session['suggested_price'], fees = session['fees'], total = session['total_price'] , gallons_requested = session['gallons_requested'], delivery_address = session['delivery_address'], delivery_date = session['delivery_date'])
 
 @app.route("/history", methods=["POST", "GET"])
 def history():
     conn = create_connection()
     cursor = conn.cursor()
 
-    command = f"SELECT * FROM history WHERE unique_id LIKE '%{session['unique_id']}%'"
+    command = f"SELECT * FROM history INNER JOIN Profile ON history.unique_id = profile.unique_id WHERE profile.email IS '{session['email']}'"
     cursor.execute(command)
 
     history_list = cursor.fetchall()

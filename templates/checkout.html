@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <a href="quotes.html">
+        <a href="{{ url_for('quotes') }}">
             <img src = "/static/images/logo-175x175.png" alt ="logo" class="logo">
         </a>
 
@@ -67,24 +67,24 @@
             <hr class="checkout_hr">
     
             <div class="left">
-                Quote:
+                Suggested Price:
                 <br>
                 <br>
-                Estimated Tax:
+                <!-- Estimated Tax:
                 <br>
-                <br>
-                Service Fees:
+                <br> -->
+                Fee:
                 <br>
             </div>
     
             <div class="right">
-                $200.00
+                ${{suggested_price}}
                 <br>
                 <br>
-                $19.88 
+                <!-- $19.88 
                 <br>
-                <br>
-                $100.00
+                <br> -->
+                {{fees}}%
                 <br>
             </div>
     
@@ -95,7 +95,7 @@
             </div>
     
             <div class="right" style="font-size: 25px; font-weight: bolder;">
-                $200.00
+                ${{total}}
             </div>
             <form id="quote_form" method="POST" action="#">
                 <div style="text-align: center; transform: translate(0, -15%);">
