@@ -1,5 +1,6 @@
 DROP TABLE Profile;
 DROP TABLE History;
+DROP TABLE Signup;
 
 CREATE TABLE Login(
     unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -7,7 +8,7 @@ CREATE TABLE Login(
     password STRING(255) NOT NULL
 );
 
-CREATE TABLE Profile(
+CREATE TABLE Singup(
     unique_id VARCHAR(255) NOT NULL PRIMARY KEY,
     fullname VARCHAR(255) NOT NULL,
     address1  VARCHAR(255) NOT NULL,

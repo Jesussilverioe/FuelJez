@@ -47,46 +47,90 @@ def create_connection():
 def index():
     
     if request.method == "POST":
-        # if not session['register-email']:
-        #   print('is here')
-        #   session['login-email'] = request.form['login-email']
-        #   session['login-password'] = request.form['login-password']
-
-        # elif not session['login-email']:
         session['register-email'] = request.form['register-email']
-        emailt = session['register-email']
-        conn = create_connection()
-        cursor = conn.cursor()
-        command = f"SELECT COUNT(*) FROM LOGIN WHERE email LIKE '%{emailt}%';"
-        cursor.execute(command)
-        count = cursor.fetchone()[0]
-        if count > 0:
-          return render_template("index.html")
-          
-
+        session['email'] = session['register-email']
         session['register-password'] = request.form['register-password']
         session['register-password2'] = request.form['register-password2']
-        hashedmapa = bcrypt.hashpw(str(session['register-password']).encode('utf-8'), bcrypt.gensalt())
-        print(hashedmapa)
-        hashedmapa = str(hashedmapa)
-        print(hashedmapa)
-        uniqid = genUniqueID(8)
-        emailt = str(session['register-email'])
-        print(hashedmapa)
+        
+        # hashedmapa = bcrypt.hashpw(str(session['register-password']).encode('utf-8'), bcrypt.gensalt())
+        # hashedmapa = str(hashedmapa)
+        password = session['register-password'].encode("utf-8")
+        
+        hashedmapa = bcrypt.hashpw(password, bcrypt.gensalt())
+
+        hashedmap = str(hashedmapa.decode('utf-8'))
+
+        emailt = session['register-email']
+
         conn = create_connection()
         cursor = conn.cursor()
-        command = f'INSERT INTO Login VALUES("{uniqid}", "{emailt}", "{hashedmapa}")'
+        command = f"SELECT COUNT(*) FROM LOGIN WHERE email LIKE '%{session['register-email']}%';"
         cursor.execute(command)
-        conn.commit()
-        cursor.close()
+        count = cursor.fetchone()[0]
 
-
-        
-        # print(session)
-        # return render_template("quotes.html", fullname = session['fullname'], address1 = session['address1'], address2 = session['address2'], state = session['state'], zipcode = session['zipcode'])
-        return redirect(url_for("create_profile"))
+        if count > 0:
+            flash(f'Email already exists')
+            return render_template("index.html")
+        elif session['register-password'] != session['register-password2']:
+            flash(f'Password does not match')
+            return render_template("index.html")
+        elif not request.form.get('term-agreement'):
+            flash(f'Agree to terms and conditions')
+            return render_template("index.html")
+        else:
+            command = f'INSERT INTO Login VALUES("{emailt}", "{hashedmap}")'
+            cursor.execute(command)
+            conn.commit()
+            cursor.close()
+            return redirect(url_for("create_profile"))
     else:
         return render_template("index.html")
+
+@app.route("/signin", methods=["POST", "GET"])
+def signin():
+    if request.method == "POST":
+        session['login-email'] = request.form['login-email']
+        session['email'] = session['login-email']
+        session['login-password'] = request.form['login-password']
+
+        print(session['login-email'])
+        
+        conn = create_connection()
+        cursor = conn.cursor()
+
+        command = f"SELECT COUNT(*) FROM Login WHERE email LIKE '%{session['email']}%'"
+        cursor.execute(command)
+        if cursor.fetchone()[0] == 0:
+            return render_template("signin.html")
+
+        command = f"SELECT fullname, address1, address2, state FROM Profile WHERE email IS '{session['email']}'"
+        cursor.execute(command)
+        temp = cursor.fetchall()
+
+        session['fullname'] = temp[0][0]
+        session['fulladdress'] = temp[0][1] + temp[0][2]
+        session['state'] = temp[0][3]
+        
+
+        command = f"SELECT * FROM Login WHERE email LIKE '%{session['login-email']}%'"
+        cursor.execute(command)
+        hashed = cursor.fetchall()[0][1].encode()
+        
+        password = session['login-password'].encode('utf-8')
+
+        if bcrypt.checkpw(password, hashed):
+            return redirect(url_for("quotes"))
+        else:
+            flash(f'Invalid password or email')
+            return render_template("signin.html")
+        
+        
+
+
+        return render_template("signin.html")
+        
+    else:
+        return render_template("signin.html")
 
 
 @app.route("/create_profile", methods=["POST", "GET"])

@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <a href="{{ url_for('quotes') }}">
+        <a href="{{ url_for('index') }}">
             <img src = "/static/images/logo-175x175.png" alt ="logo" class="logo">
         </a>
 
@@ -25,14 +25,13 @@
     </header>
     <div class="form-box">
         <div style="font-family: Montserrat; font-size: 25px; font-weight: bolder; text-align: center; padding: 8% 0;">
-            REGISTER
+            SIGN IN
         </div>
-        <form  id = "formsinputs" class="input-group" method="POST" action="#">
-            <input type="email" name="register-email" class="input-field" placeholder="Email" required>
-            <input type="password" name="register-password" class="input-field" placeholder="Enter Password" required>
-            <input type="password" name="register-password2" class="input-field" placeholder="Confirm Password" required>
-            <input type="checkbox" name="term-agreement" class="check-box"><span style="color: rgb(0, 0, 0); font-size: 13px; bottom: 68px;">I agree to the terms and conditions of service.</span>
-            <button type="submit" class="submit-btn">Register</button>
+        <form id="formsinputs" class="input-group" method="POST" action="#">
+            <input type="text" name="login-email" class="input-field" placeholder="Email">
+            <input type="password" name="login-password" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type="submit" class="submit-btn">Log in</button>
         </form>
         <div class="flash_cancel">
             {% for message in get_flashed_messages() %}
@@ -40,7 +39,10 @@
             {% endfor %}
         </div>
     </div>
-
+    
+    
+    
+ 
 </body>
 
 </html>
