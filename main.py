@@ -139,23 +139,21 @@ def create_profile():
         session['fullname'] = request.form['fullname']
         session['address1'] = request.form['address1']
         session['address2'] = request.form['address2']
+        session['fulladdress'] = session['address1'] + session['address2']
         session['state'] = request.form['state']
         session['zipcode'] = request.form['zipcode']
+
         # print(session)
         unique_id = genUniqueID(8)
         session['unique_id'] = unique_id
-        
+
 
         conn = create_connection()
         cursor = conn.cursor()
 
-        command = f"INSERT INTO Profile VALUES('{unique_id}', '{session['fullname']}', '{session['address1']}', '{session['address2']}', '{session['state']}', {session['zipcode']})"
+        command = f"INSERT INTO Profile VALUES('{unique_id}', '{session['fullname']}', '{session['address1']}', '{session['address2']}', '{session['state']}', {session['zipcode']}, '{session['register-email']}')"
         cursor.execute(command)
 
-        # command = f"SELECT * FROM profile;"
-        # cursor.execute(command)
-
-        # print("Profile during profile ", cursor.fetchall())
         conn.commit()
         cursor.close()
         return redirect(url_for("quotes"))
