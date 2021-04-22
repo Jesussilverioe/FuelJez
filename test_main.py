@@ -1,7 +1,7 @@
 import unittest
 
 import flask.globals
-from main import *
+from app.main import *
 
 
 class TestApp(unittest.TestCase):
